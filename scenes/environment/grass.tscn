@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b313sv7ibr06b"]
+
+[ext_resource type="Texture2D" uid="uid://cebimwrrke2i0" path="res://assets/textures/environment/grass.png" id="1_t53ui"]
+[ext_resource type="Script" uid="uid://dcu64fhdm72su" path="res://scenes/environment/grass.gd" id="1_wlmil"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wlmil"]
+radius = 2.0
+
+[node name="Area2D" type="Area2D" unique_id=1444747764]
+script = ExtResource("1_wlmil")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=719225761]
+position = Vector2(0, -6)
+texture = ExtResource("1_t53ui")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634200618]
+shape = SubResource("CircleShape2D_wlmil")

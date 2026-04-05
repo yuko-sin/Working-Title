@@ -1,0 +1,25 @@
+[gd_resource type="Theme" format=3 uid="uid://ba0klwedii3ec"]
+
+[ext_resource type="FontFile" uid="uid://cg1ur6jxvwf45" path="res://fonts/roboto/Roboto-Bold.ttf" id="1_d4nwg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ct1h"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 1
+border_width_right = 3
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4nwg"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/fonts/font = ExtResource("1_d4nwg")
+Button/styles/hover = SubResource("StyleBoxFlat_7ct1h")
+Button/styles/normal = SubResource("StyleBoxFlat_d4nwg")

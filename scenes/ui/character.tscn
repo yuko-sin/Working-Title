@@ -1,0 +1,170 @@
+[gd_scene format=3 uid="uid://d36cxruxs006j"]
+
+[ext_resource type="Script" uid="uid://e4qnppy1wue0" path="res://scenes/ui/character.gd" id="1_8do7n"]
+[ext_resource type="FontFile" uid="uid://bf5egbw0c8nhk" path="res://fonts/roboto/Roboto-BoldItalic.ttf" id="2_ddi1i"]
+[ext_resource type="PackedScene" uid="uid://cxvefu3v2bndy" path="res://scenes/ui/itemSlot.tscn" id="3_bhuil"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kw2ti"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 1
+border_width_right = 12
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n3nui"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ddi1i"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="Theme" id="Theme_bhuil"]
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_n3nui")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_n3nui")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_n3nui")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_ddi1i")
+
+[node name="Character" type="Panel" unique_id=432010017]
+offset_right = 208.0
+offset_bottom = 224.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kw2ti")
+script = ExtResource("1_8do7n")
+
+[node name="colorRect_0" type="ColorRect" parent="." unique_id=841385481]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 28.0
+offset_right = 48.0
+offset_bottom = 54.0
+
+[node name="colorRect_1" type="ColorRect" parent="." unique_id=384428018]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 28.0
+offset_right = 76.0
+offset_bottom = 54.0
+
+[node name="Equipment" type="VBoxContainer" parent="." unique_id=567579557]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 96.0
+offset_bottom = 72.0
+alignment = 1
+
+[node name="Label" type="Label" parent="Equipment" unique_id=2145060606]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ddi1i")
+theme_override_font_sizes/font_size = 12
+text = "Equipment"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slots" type="HBoxContainer" parent="Equipment" unique_id=1584692511]
+layout_mode = 2
+alignment = 1
+
+[node name="Weapon" parent="Equipment/Slots" unique_id=484257602 instance=ExtResource("3_bhuil")]
+layout_mode = 2
+
+[node name="Chest" parent="Equipment/Slots" unique_id=1760436040 instance=ExtResource("3_bhuil")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Equipment" unique_id=306279421]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Wepon" type="Label" parent="Equipment/HBoxContainer" unique_id=1396565981]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ddi1i")
+theme_override_font_sizes/font_size = 4
+text = "Weapon"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Armor" type="Label" parent="Equipment/HBoxContainer" unique_id=1801871996]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ddi1i")
+theme_override_font_sizes/font_size = 4
+text = "Armor"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Attributes" type="VBoxContainer" parent="." unique_id=1536599930]
+layout_mode = 0
+offset_left = 96.0
+offset_right = 192.0
+offset_bottom = 60.0
+alignment = 1
+
+[node name="Titl" type="Label" parent="Attributes" unique_id=1051397433]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ddi1i")
+theme_override_font_sizes/font_size = 12
+text = "Attributes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Damage" type="Label" parent="Attributes" unique_id=349970332]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ddi1i")
+theme_override_font_sizes/font_size = 6
+text = "Damage: null"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Armor" type="Label" parent="Attributes" unique_id=777067863]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ddi1i")
+theme_override_font_sizes/font_size = 6
+text = "Armor: null"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Inventory" type="VBoxContainer" parent="." unique_id=633853083]
+layout_mode = 0
+offset_top = 82.0
+offset_right = 192.0
+offset_bottom = 120.0
+
+[node name="Inventory" type="Label" parent="Inventory" unique_id=1074502563]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ddi1i")
+theme_override_font_sizes/font_size = 12
+text = "Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1509910769]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 100.0
+offset_right = 206.0
+offset_bottom = 221.0
+theme = SubResource("Theme_bhuil")
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=1718491439]
+layout_mode = 2
+columns = 6
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

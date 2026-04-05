@@ -1,0 +1,46 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="blueprint"
+run/main_scene="uid://b2e06hdc33ck"
+config/features=PackedStringArray("4.6", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*uid://5a2js5cvo71s"
+Audio="*uid://cgv5q6ige8d4o"
+InventoryManager="*uid://b83b008au6sl"
+Items="*uid://fsdxdwyt6dmq"
+EquipmentManager="*uid://c08ex4vmta8rk"
+AttributesManager="*uid://dqjxq2q4uabjo"
+Combat="*uid://b5tidcghv5oqd"
+Popups="*uid://c2wp0mtt2k2i4"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=320
+window/size/mode=3
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

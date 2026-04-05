@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://b6agah8vn87v2"]
+
+[ext_resource type="FontFile" uid="uid://bj36vvvcog8mb" path="res://fonts/roboto/Roboto-Italic.ttf" id="1_2xvme"]
+[ext_resource type="Script" uid="uid://difdl6gxq5lmd" path="res://scenes/ui/hint.gd" id="1_5kxpe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2xvme"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+
+[sub_resource type="Animation" id="Animation_2xvme"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pj02t"]
+resource_name = "default"
+length = 3.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eka5h"]
+_data = {
+&"RESET": SubResource("Animation_2xvme"),
+&"default": SubResource("Animation_pj02t")
+}
+
+[node name="Hint" type="Label" unique_id=70410948]
+offset_right = 64.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("1_2xvme")
+theme_override_font_sizes/font_size = 6
+text = "Text, text, text..."
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_5kxpe")
+
+[node name="Panel" type="Panel" parent="." unique_id=887641692]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2xvme")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1268926127]
+libraries/ = SubResource("AnimationLibrary_eka5h")
+autoplay = &"default"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

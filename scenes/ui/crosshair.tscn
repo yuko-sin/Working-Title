@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://df8d8m8l3thmo"]
+
+[ext_resource type="Script" uid="uid://pa7g8m4vf82h" path="res://scenes/ui/crosshair.gd" id="1_n1pc2"]
+[ext_resource type="Texture2D" uid="uid://bicvts6jlv38k" path="res://assets/textures/ui/crosshair.png" id="2_sdor8"]
+
+[sub_resource type="Animation" id="Animation_n1pc2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Up:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -14)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Right:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(14, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Down:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 14)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Left:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-14, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sdor8"]
+resource_name = "out"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Up:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(0, -14), Vector2(0, -40)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Right:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.099999994),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(14, 0), Vector2(40, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Down:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.099999994),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(0, 14), Vector2(0, 40)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Left:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.099999994),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(-14, 0), Vector2(-40, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dhcxq"]
+_data = {
+&"RESET": SubResource("Animation_n1pc2"),
+&"out": SubResource("Animation_sdor8")
+}
+
+[node name="Crosshair" type="Node2D" unique_id=116156046]
+top_level = true
+scale = Vector2(2, 2)
+script = ExtResource("1_n1pc2")
+
+[node name="Up" type="Sprite2D" parent="." unique_id=1055869031]
+position = Vector2(0, -14)
+scale = Vector2(1, 2.4)
+texture = ExtResource("2_sdor8")
+region_enabled = true
+region_rect = Rect2(7, 0, 2, 5)
+
+[node name="Right" type="Sprite2D" parent="." unique_id=693675370]
+position = Vector2(14, 0)
+scale = Vector2(2.4, 1)
+texture = ExtResource("2_sdor8")
+region_enabled = true
+region_rect = Rect2(11, 7, 5, 2)
+
+[node name="Down" type="Sprite2D" parent="." unique_id=1598289582]
+position = Vector2(0, 14)
+scale = Vector2(1, 2.4)
+texture = ExtResource("2_sdor8")
+region_enabled = true
+region_rect = Rect2(7, 11, 2, 5)
+
+[node name="Left" type="Sprite2D" parent="." unique_id=1476673193]
+position = Vector2(-14, 0)
+scale = Vector2(2.3999999, 1)
+texture = ExtResource("2_sdor8")
+region_enabled = true
+region_rect = Rect2(0, 7, 5, 2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1876509875]
+libraries/ = SubResource("AnimationLibrary_dhcxq")
+
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cxvefu3v2bndy"]
+
+[ext_resource type="FontFile" uid="uid://2fj3fevehvqt" path="res://fonts/roboto/Roboto-Regular.ttf" id="1_jkamp"]
+
+[sub_resource type="Theme" id="Theme_jkamp"]
+
+[node name="Slot" type="TextureRect" unique_id=484257602]
+custom_minimum_size = Vector2(24, 24)
+offset_right = 24.0
+offset_bottom = 24.0
+theme = SubResource("Theme_jkamp")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1210270370]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Quantity" type="Label" parent="." unique_id=1820550394]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_jkamp")
+theme_override_font_sizes/font_size = 6
+text = "xN"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Highlight" type="Node2D" parent="." unique_id=1912492461]
+
+[node name="polygon2D_0" type="Polygon2D" parent="Highlight" unique_id=1174294702]
+scale = Vector2(1.5, 1)
+polygon = PackedVector2Array(0, 0, 2, 0, 0.6666667, 1, 0, 3)
+
+[node name="polygon2D_1" type="Polygon2D" parent="Highlight" unique_id=328236656]
+scale = Vector2(1.5, 1)
+polygon = PackedVector2Array(14, 0, 16, 0, 16, 3, 15.333334, 1)
+
+[node name="polygon2D_2" type="Polygon2D" parent="Highlight" unique_id=467594910]
+scale = Vector2(1.5, 1)
+polygon = PackedVector2Array(14, 24, 15.333334, 23, 16, 21, 16, 24)
+
+[node name="polygon2D_3" type="Polygon2D" parent="Highlight" unique_id=1581811672]
+scale = Vector2(1.5, 1)
+polygon = PackedVector2Array(0, 21, 0.6666667, 23, 2, 24, 0, 24)

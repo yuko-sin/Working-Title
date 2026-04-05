@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://cpb1ddmkmh1k4"]
+
+[ext_resource type="Script" uid="uid://dff4a22xwkwsf" path="res://scenes/ui/ui.gd" id="1_nxs6r"]
+[ext_resource type="FontFile" uid="uid://2fj3fevehvqt" path="res://fonts/roboto/Roboto-Regular.ttf" id="2_frdba"]
+[ext_resource type="Texture2D" uid="uid://dcgtwyre4m1p3" path="res://assets/textures/ui/bar.png" id="4_0dwhk"]
+[ext_resource type="FontFile" uid="uid://cg1ur6jxvwf45" path="res://fonts/roboto/Roboto-Bold.ttf" id="4_g5kmx"]
+[ext_resource type="Texture2D" uid="uid://dinn16h22rcox" path="res://assets/textures/ui/bar_progress.png" id="4_pfayw"]
+[ext_resource type="FontFile" uid="uid://bf5egbw0c8nhk" path="res://fonts/roboto/Roboto-BoldItalic.ttf" id="6_pfayw"]
+
+[node name="UserInterface" type="Control" unique_id=1164280968]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_nxs6r")
+
+[node name="FPS" type="Label" parent="." unique_id=1820480851]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_bottom = 32.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("4_g5kmx")
+theme_override_font_sizes/font_size = 12
+text = "FPS : null/sec."
+vertical_alignment = 1
+
+[node name="Bars" type="VBoxContainer" parent="." unique_id=1778700892]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 44.0
+offset_bottom = 34.0
+metadata/_edit_group_ = true
+
+[node name="Health" type="VBoxContainer" parent="Bars" unique_id=1855046900]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Label" type="Label" parent="Bars/Health" unique_id=150680059]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_frdba")
+theme_override_font_sizes/font_size = 4
+text = "Health null/null"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Bars/Health" unique_id=1548818742]
+layout_mode = 2
+value = 100.0
+texture_under = ExtResource("4_0dwhk")
+texture_progress = ExtResource("4_pfayw")
+
+[node name="Stamina" type="VBoxContainer" parent="Bars" unique_id=188508196]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Label" type="Label" parent="Bars/Stamina" unique_id=835685357]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_frdba")
+theme_override_font_sizes/font_size = 4
+text = "Stamina null/null"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Bars/Stamina" unique_id=1600661181]
+layout_mode = 2
+value = 100.0
+texture_under = ExtResource("4_0dwhk")
+texture_progress = ExtResource("4_pfayw")
+
+[node name="Magazine" type="VBoxContainer" parent="." unique_id=1825876810]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -160.0
+offset_right = 39.999996
+offset_bottom = 202.5
+grow_vertical = 0
+scale = Vector2(0.4, 0.4)
+alignment = 2
+
+[node name="Quantity" type="Label" parent="." unique_id=1335803626]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -30.0
+offset_right = 70.0
+offset_bottom = -10.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("6_pfayw")
+theme_override_font_sizes/font_size = 12
+text = "xN"
+vertical_alignment = 1
+
+[node name="Menus" type="HBoxContainer" parent="." unique_id=366733827]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -112.0
+offset_right = 80.0
+offset_bottom = 112.0
+grow_vertical = 2

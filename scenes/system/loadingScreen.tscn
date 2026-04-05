@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cnvsml5rt4hgg"]
+
+[ext_resource type="Script" uid="uid://coxdiax5t2fbv" path="res://scenes/system/loadingScreen.gd" id="1_26b4i"]
+[ext_resource type="FontFile" uid="uid://bj36vvvcog8mb" path="res://fonts/roboto/Roboto-Italic.ttf" id="2_qhghk"]
+
+[node name="LoadingScreen" type="Control" unique_id=1305209757]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_26b4i")
+
+[node name="Background" type="ColorRect" parent="." unique_id=615845055]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Text" type="Label" parent="." unique_id=951744852]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_qhghk")
+theme_override_font_sizes/font_size = 10
+text = "Loading..."
+horizontal_alignment = 1
+vertical_alignment = 1

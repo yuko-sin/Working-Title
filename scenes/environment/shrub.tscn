@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dyoesmp6008ts"]
+
+[ext_resource type="Script" uid="uid://bw5851sdf8qfh" path="res://scenes/environment/shrub.gd" id="1_abapo"]
+[ext_resource type="Texture2D" uid="uid://dxtbg8fcb3bqr" path="res://assets/textures/environment/shrubs.png" id="2_sfcqw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4myh6"]
+radius = 4.0
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=1604851399]
+script = ExtResource("1_abapo")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1636618134]
+position = Vector2(0, -6)
+texture = ExtResource("2_sfcqw")
+region_enabled = true
+region_rect = Rect2(0, 0, 28, 28)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1455789355]
+shape = SubResource("CircleShape2D_4myh6")

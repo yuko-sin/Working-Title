@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b0sqc3euioh7i"]
+
+[ext_resource type="Texture2D" uid="uid://cb18kfn7dj4p4" path="res://assets/textures/environment/stones.png" id="1_d7cqn"]
+[ext_resource type="Script" uid="uid://bplajghrovoly" path="res://scenes/environment/stone.gd" id="1_dipa4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4myh6"]
+radius = 4.0
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=1604851399]
+script = ExtResource("1_dipa4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1636618134]
+position = Vector2(0, -4)
+texture = ExtResource("1_d7cqn")
+region_enabled = true
+region_rect = Rect2(0, 0, 24, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1455789355]
+shape = SubResource("CircleShape2D_4myh6")

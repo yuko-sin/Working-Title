@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://tocn0yqhsroo"]
+
+[ext_resource type="Script" uid="uid://3g5caju5rb4p" path="res://scenes/ui/loot.gd" id="1_4t845"]
+[ext_resource type="FontFile" uid="uid://bf5egbw0c8nhk" path="res://fonts/roboto/Roboto-BoldItalic.ttf" id="2_og17k"]
+[ext_resource type="Theme" uid="uid://ba0klwedii3ec" path="res://resources/theme.tres" id="4_og17k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kw2ti"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 1
+border_width_right = 12
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n3nui"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ddi1i"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="Theme" id="Theme_bhuil"]
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_n3nui")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_n3nui")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_n3nui")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_ddi1i")
+
+[node name="Loot" type="Panel" unique_id=432010017]
+offset_right = 80.0
+offset_bottom = 224.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kw2ti")
+script = ExtResource("1_4t845")
+
+[node name="Inventory" type="Label" parent="." unique_id=1074502563]
+layout_mode = 0
+offset_right = 68.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("2_og17k")
+theme_override_font_sizes/font_size = 12
+text = "Loot"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1509910769]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 28.0
+offset_right = 64.0
+offset_bottom = 220.0
+theme = SubResource("Theme_bhuil")
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=1718491439]
+layout_mode = 2
+columns = 6
+
+[node name="Close" type="Button" parent="." unique_id=370499889]
+layout_mode = 0
+offset_left = 60.0
+offset_right = 80.0
+offset_bottom = 21.0
+theme = ExtResource("4_og17k")
+text = "X"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="Close" to="." method="_on_close_pressed"]

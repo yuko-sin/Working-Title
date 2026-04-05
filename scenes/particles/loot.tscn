@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cmlmyny38gohv"]
+
+[ext_resource type="Texture2D" uid="uid://cb0k1tywxyvg7" path="res://assets/textures/particles/spark.png" id="1_lj1rc"]
+[ext_resource type="Script" uid="uid://bls6ffr67n2bt" path="res://scenes/particles/loot.gd" id="2_o0ahh"]
+
+[sub_resource type="Gradient" id="Gradient_o0ahh"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0mqjx"]
+gradient = SubResource("Gradient_o0ahh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_heuad"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 8.0
+gravity = Vector3(0, -40, 0)
+scale_min = 0.19999999
+scale_max = 0.39999998
+color_ramp = SubResource("GradientTexture1D_0mqjx")
+
+[node name="GPUParticles2D" type="GPUParticles2D" unique_id=1231446835]
+amount = 3
+texture = ExtResource("1_lj1rc")
+process_material = SubResource("ParticleProcessMaterial_heuad")
+script = ExtResource("2_o0ahh")

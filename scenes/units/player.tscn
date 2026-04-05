@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://cfgqdbbejfw4r"]
+
+[ext_resource type="Script" uid="uid://b1gcqd1crw1h6" path="res://scenes/units/player.gd" id="1_esfxm"]
+[ext_resource type="Texture2D" uid="uid://cn84oepjgwt3b" path="res://assets/textures/units/player/player.png" id="1_pkbir"]
+[ext_resource type="Script" uid="uid://0c4yw5jkvp5c" path="res://scenes/units/camera.gd" id="2_55td2"]
+[ext_resource type="Script" uid="uid://cd7fcxc4b6q47" path="res://scenes/units/weapon.gd" id="4_rwmet"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwmet"]
+atlas = ExtResource("1_pkbir")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55td2"]
+atlas = ExtResource("1_pkbir")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xovxq"]
+atlas = ExtResource("1_pkbir")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_esfxm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwmet")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55td2")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xovxq")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_esfxm"]
+radius = 2.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=348753258]
+script = ExtResource("1_esfxm")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=629458729]
+script = ExtResource("2_55td2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=446923636]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_esfxm")
+animation = &"stand"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2066043884]
+shape = SubResource("CircleShape2D_esfxm")
+
+[node name="Weapon" type="Sprite2D" parent="." unique_id=5091630]
+position = Vector2(0, -3)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("4_rwmet")
+
+[node name="Cooldown" type="Timer" parent="Weapon" unique_id=355787982]
+one_shot = true
+
+[node name="Timer" type="Timer" parent="." unique_id=540244790]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

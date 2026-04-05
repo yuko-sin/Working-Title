@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://buopxs275wirv"]
+
+[ext_resource type="Script" uid="uid://bqth7qt1bfxny" path="res://scenes/ui/unitInfo.gd" id="1_ynjji"]
+[ext_resource type="FontFile" uid="uid://cg1ur6jxvwf45" path="res://fonts/roboto/Roboto-Bold.ttf" id="2_ynjji"]
+
+[sub_resource type="Gradient" id="Gradient_r8f7n"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_j3lvc"]
+gradient = SubResource("Gradient_r8f7n")
+
+[node name="VBoxContainer" type="VBoxContainer" unique_id=1537258643]
+show_behind_parent = true
+offset_right = 16.0
+offset_bottom = 7.0
+theme_override_constants/separation = 0
+script = ExtResource("1_ynjji")
+
+[node name="Label" type="Label" parent="." unique_id=284611915]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ynjji")
+theme_override_font_sizes/font_size = 4
+text = "Unit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1854496954]
+custom_minimum_size = Vector2(16, 2)
+layout_mode = 2
+value = 20.0
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_j3lvc")
