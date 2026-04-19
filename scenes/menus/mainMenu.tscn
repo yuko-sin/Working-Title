@@ -86,7 +86,6 @@ text = "Play Demo"
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme = ExtResource("1_cpkd4")
-disabled = true
 text = "Settings"
 
 [node name="Exit" type="Button" parent="Buttons" unique_id=474798951]
@@ -122,7 +121,7 @@ offset_top = 64.0
 offset_bottom = 128.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_2brji")
-text = "ver_0.1_demo"
+text = "ver_0.3_dev"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -210,22 +209,18 @@ theme = SubResource("Theme_2brji")
 theme_override_fonts/bold_font = ExtResource("2_cv8r1")
 theme_override_font_sizes/normal_font_size = 8
 theme_override_font_sizes/bold_font_size = 8
-text = "Initial build - includes:
+text = "THIRD BUILD - includes:
 
-CORE ELEMENTS
-- Scenes Architecture
-- Scenes Hierarchy
-- Scenes Transition
-- State Machine
-- Globals
-
-GAMEPLAY (Test Only)
-- Equipment/Inventory System
-- World
-- Weapons
-- Combat (Ranged)
-- Enemy AI (Zombi)
-- Environment Objects"
+- Added test melee attack
+- Added proper inventory menu
+- Extended placeholder equipment menu
+- Added categories for the items
+- Added consumable system
+- Extended player's movement afflictions
+- Added new items
+- Added new sounds
+- Added menus buttons in the UI
+- Extended popup global script"
 
 [connection signal="pressed" from="Buttons/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Buttons/Settings" to="." method="_on_settings_pressed"]

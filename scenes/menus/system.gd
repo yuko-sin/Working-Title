@@ -2,6 +2,8 @@ extends Control
 
 func _ready() -> void:
 	get_tree().paused = true
+
+func _process(delta: float) -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_resume_pressed() -> void:
@@ -9,11 +11,11 @@ func _on_resume_pressed() -> void:
 	queue_free()
 
 func _on_settings_pressed() -> void:
-	pass
+	Global.UI.add_child(load("res://scenes/menus/settings.tscn").instantiate())
 
 func _on_main_menu_pressed() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	Global.world.queue_free()
+	Global.area.queue_free()
 	Global.ui.queue_free()
 	Global.UI.add_child(load("res://scenes/menus/mainMenu.tscn").instantiate())
 

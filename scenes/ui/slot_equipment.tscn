@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cemo5qfcp0ti1"]
+
+[ext_resource type="Texture2D" uid="uid://dsmeklwyyehlt" path="res://assets/textures/ui/slots/slot_armor.png" id="1_cbgm1"]
+
+[sub_resource type="Theme" id="Theme_hbd44"]
+
+[node name="Slot" type="TextureRect" unique_id=484257602]
+custom_minimum_size = Vector2(26, 26)
+offset_right = 24.0
+offset_bottom = 24.0
+theme = SubResource("Theme_hbd44")
+texture = ExtResource("1_cbgm1")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=827960872]
+self_modulate = Color(1, 1, 1, 0.60784316)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

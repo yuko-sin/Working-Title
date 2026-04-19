@@ -3,7 +3,12 @@
 [ext_resource type="Script" uid="uid://b1gcqd1crw1h6" path="res://scenes/units/player.gd" id="1_esfxm"]
 [ext_resource type="Texture2D" uid="uid://cn84oepjgwt3b" path="res://assets/textures/units/player/player.png" id="1_pkbir"]
 [ext_resource type="Script" uid="uid://0c4yw5jkvp5c" path="res://scenes/units/camera.gd" id="2_55td2"]
+[ext_resource type="Script" uid="uid://ddu3y74t2qr5v" path="res://scenes/units/melee.gd" id="4_174p4"]
 [ext_resource type="Script" uid="uid://cd7fcxc4b6q47" path="res://scenes/units/weapon.gd" id="4_rwmet"]
+[ext_resource type="Texture2D" uid="uid://c2mif5yvwmgs1" path="res://assets/textures/trace.png" id="5_rwmet"]
+[ext_resource type="Script" uid="uid://orjy3iatna74" path="res://scenes/units/swing.gd" id="6_xovxq"]
+[ext_resource type="Script" uid="uid://ibtki84kgw17" path="res://scenes/units/test.gd" id="8_olx12"]
+[ext_resource type="Texture2D" uid="uid://2b7t5vjwu7fh" path="res://assets/textures/equipment/weapons/ranged/swords/ironSword.png" id="8_ts5o2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rwmet"]
 atlas = ExtResource("1_pkbir")
@@ -47,6 +52,85 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_esfxm"]
 radius = 2.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_xovxq"]
+radius = 24.0
+
+[sub_resource type="Animation" id="Animation_rwmet"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Melee/CollisionShape2D/Swing:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xovxq"]
+resource_name = "default"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Melee/CollisionShape2D/Swing:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1.0845727, 1.0845727, 1.0845727, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_174p4"]
+_data = {
+&"RESET": SubResource("Animation_rwmet"),
+&"default": SubResource("Animation_xovxq")
+}
+
+[sub_resource type="Animation" id="Animation_gxusr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Test:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_oti7e"]
+resource_name = "default"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Test:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ad5rf"]
+_data = {
+&"RESET": SubResource("Animation_gxusr"),
+&"default": SubResource("Animation_oti7e")
+}
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=348753258]
 script = ExtResource("1_esfxm")
 
@@ -61,16 +145,40 @@ animation = &"stand"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2066043884]
 shape = SubResource("CircleShape2D_esfxm")
 
+[node name="Melee" type="Area2D" parent="." unique_id=726195208]
+script = ExtResource("4_174p4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Melee" unique_id=76583023]
+position = Vector2(8, 0)
+shape = SubResource("CircleShape2D_xovxq")
+
+[node name="Swing" type="Sprite2D" parent="Melee/CollisionShape2D" unique_id=788513049]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("5_rwmet")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+script = ExtResource("6_xovxq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Melee/CollisionShape2D/Swing" unique_id=1413330440]
+root_node = NodePath("../../../../Weapon")
+libraries/ = SubResource("AnimationLibrary_174p4")
+
 [node name="Weapon" type="Sprite2D" parent="." unique_id=5091630]
-position = Vector2(0, -3)
+position = Vector2(0, -4)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("4_rwmet")
 
 [node name="Cooldown" type="Timer" parent="Weapon" unique_id=355787982]
 one_shot = true
 
-[node name="Timer" type="Timer" parent="." unique_id=540244790]
-wait_time = 0.1
-autostart = true
+[node name="Node2D" type="Node2D" parent="." unique_id=1382326436]
+position = Vector2(0, -5)
+script = ExtResource("8_olx12")
+metadata/_edit_group_ = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="Test" type="Sprite2D" parent="Node2D" unique_id=1222741607]
+texture = ExtResource("8_ts5o2")
+offset = Vector2(-8, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D" unique_id=1160226910]
+libraries/ = SubResource("AnimationLibrary_ad5rf")

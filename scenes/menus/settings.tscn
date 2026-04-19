@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://wyxm2diccc58"]
+
+[ext_resource type="Script" uid="uid://b2tovvxsmifdn" path="res://scenes/menus/settings.gd" id="1_g2810"]
+[ext_resource type="Theme" uid="uid://ba0klwedii3ec" path="res://resources/theme.tres" id="2_d8vgy"]
+[ext_resource type="FontFile" uid="uid://cg1ur6jxvwf45" path="res://fonts/roboto/Roboto-Bold.ttf" id="3_v4co7"]
+[ext_resource type="FontFile" uid="uid://bf5egbw0c8nhk" path="res://fonts/roboto/Roboto-BoldItalic.ttf" id="5_qrgib"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kw2ti"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="Settings" type="Panel" unique_id=432010017]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -120.0
+offset_right = 140.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kw2ti")
+script = ExtResource("1_g2810")
+
+[node name="Label" type="Label" parent="." unique_id=1461313218]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("3_v4co7")
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=158278595]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 70.0
+offset_right = 220.0
+offset_bottom = 200.0
+
+[node name="MuteAudio" type="CheckBox" parent="VBoxContainer" unique_id=1578481965]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_qrgib")
+theme_override_font_sizes/font_size = 8
+text = "Mute Audio"
+
+[node name="DamageValues" type="CheckBox" parent="VBoxContainer" unique_id=1020526515]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_qrgib")
+theme_override_font_sizes/font_size = 8
+button_pressed = true
+text = "Damage Values"
+
+[node name="ScreenShake" type="CheckBox" parent="VBoxContainer" unique_id=174299429]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_qrgib")
+theme_override_font_sizes/font_size = 8
+button_pressed = true
+text = "Screen Shake"
+
+[node name="Ok" type="Button" parent="." unique_id=872406537]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_d8vgy")
+text = "Ok"
+
+[connection signal="pressed" from="VBoxContainer/MuteAudio" to="." method="_on_mute_audio_pressed"]
+[connection signal="pressed" from="Ok" to="." method="_on_ok_pressed"]

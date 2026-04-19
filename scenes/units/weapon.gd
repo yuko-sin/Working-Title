@@ -8,8 +8,8 @@ func _ready() -> void:
 
 func on_update() -> void:
 	if Global.player.equipment.weapon:
-		texture = load(Global.player.equipment.weapon.model)
-		$Cooldown.wait_time = Global.player.equipment.weapon.fire_rate
+		texture = load(Global.player.equipment.weapon.texture)
+		$Cooldown.wait_time = Global.player.equipment.weapon.cooldown
 	else:
 		texture = null
 
@@ -52,7 +52,7 @@ func _process(delta: float) -> void:
 				
 				bullet.direction = (get_global_mouse_position() - (Global.player.position + Vector2(randf_range(-precision, precision), randf_range(-precision, precision)))).normalized()
 				
-				Global.world.add_child(bullet)
+				Global.area.add_child(bullet)
 				$Cooldown.start()
 				Global.player.equipment.weapon.magazine_current -= 1
 				Audio.instance_sound(Global.player.equipment.weapon.sound_fire)
@@ -64,8 +64,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.is_pressed():
 			if Global.player.equipment.weapon:
-				get_parent().is_shooting = true
-			else:
-				Global.ui.instantiate_hint("I need a waepon!")
+				print(Global.player.equipment.weapon.type)
+				#get_parent().is_shooting = true
+			#else:
+				#Global.ui.instantiate_hint("I need a waepon!")
 		else:
 			get_parent().is_shooting = false

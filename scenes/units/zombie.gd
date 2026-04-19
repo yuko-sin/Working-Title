@@ -8,9 +8,10 @@ var line_of_sight : int = 128
 func _ready() -> void:
 	add_to_group("enemy")
 	unit = "Zombie"
-	health_maximum = 5 + randi_range(0, 5)
-	health_current = health_maximum
-	damage = 5
+	stats.health_maximum = 5 + randi_range(0, 5)
+	stats.health_current = stats.health_maximum
+	damage_lower = 2
+	damage_upper = 4
 	armor = 0
 	movement_speed = 20
 	stateFactory = StateFactoryEnemy.new()
@@ -32,7 +33,7 @@ func call_for_help(target : Unit) -> void:
 	for node in get_tree().get_nodes_in_group("enemy"):
 		if not node.state.name == "chase":
 			if not node == self and node.position.distance_to(position) <= help_call_range:
-				if node.health_current > 0:
+				if node.stats.health_current > 0:
 					node.focus = target
 					node.change_state("chase")
 

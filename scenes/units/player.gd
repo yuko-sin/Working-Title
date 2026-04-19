@@ -1,18 +1,32 @@
 extends Unit
 
+var spawn_point : Dictionary = {
+	"area" : "res://scenes/world/world.tscn",
+	"position" : Vector2(0.0, 0.0)
+}
+
+var taunts : Dictionary
+
 var is_shooting : bool
 var is_running : bool
 var is_running_pressed : bool
 
 func _ready() -> void:
 	Global.player = self
+	
+	## [?] Load Game
+	###########################################################################
+	if FileAccess.file_exists("user://game.save"):
+		Global.load_game()
+	
+	#position = spawn_position
 	stateFactory = StateFactoryPlayer.new()
 	change_state("stand")
 	for i in range(60): inventory[i] = null
 	
 	#Starting Equipment
-	equipment.weapon = Items.pistol
-	AttributesManager.increase_attributes(self, equipment.weapon)
+	#equipment.weapon = Items.pistol
+	#AttributesManager.increase_attributes(self, equipment.weapon)
 
 func _process(delta: float) -> void:
 	if is_shooting:
@@ -46,5 +60,5 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 func _on_timer_timeout() -> void:
 	if not is_running:
-		if stamina_current < stamina_maximum:
-			stamina_current += 1
+		if stats.stamina_current < stats.stamina_maximum:
+			stats.stamina_current += 1

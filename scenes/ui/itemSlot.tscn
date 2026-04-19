@@ -39,6 +39,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Highlight" type="Node2D" parent="." unique_id=1912492461]
+visible = false
 
 [node name="polygon2D_0" type="Polygon2D" parent="Highlight" unique_id=1174294702]
 scale = Vector2(1.5, 1)

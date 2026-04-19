@@ -1,21 +1,13 @@
-extends Node2D
+extends Area
 
 var map_size = Vector2i(128, 128)
 var busy_cells : Array
 
-func _ready() -> void:
-	Global.world = self
-	
+func initialize() -> void:
 	#Set Terrain
 	for x in range(map_size.x):
 		for y in range(map_size.y):
 			$Terrain.set_cell(Vector2i(x, y), 0, Vector2i(0, 0), 0)
-	
-	#Set Player
-	var player = load("res://scenes/units/player.tscn").instantiate()
-	var random_cell = $Terrain.get_used_cells().pick_random()
-	player.position = $Terrain.to_global(random_cell)
-	add_child(player)
 	
 	#Set Crosshair
 	add_child(load("res://scenes/ui/crosshair.tscn").instantiate())
@@ -42,6 +34,7 @@ func _ready() -> void:
 				add_child(grass)
 	
 	#Set Enemies
+	await get_tree().process_frame
 	for cell in $Terrain.get_used_cells():
 		if not cell in busy_cells:
 			if randi()%500 < 1:

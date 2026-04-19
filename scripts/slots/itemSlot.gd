@@ -7,25 +7,40 @@ var dictionary
 func _ready() -> void:
 	connect("mouse_entered", on_mouse_entered)
 	connect("mouse_exited", on_mouse_exited)
-	get_node("Highlight").hide()
 	
 	#Busy Slot
 	if dictionary[id]:
-		texture = load(dictionary[id].icon)
+		connect("gui_input", on_gui_input)
+		texture = load(dictionary[id].texture)
 	
 	#Quantity
-	if dictionary[id] and "quantity" in dictionary[id] and dictionary[id].quantity > 0:
-		get_node("Quantity").text = "x" + str(dictionary[id].quantity)
+	if dictionary[id] and "quantity_current" in dictionary[id] and dictionary[id].quantity_current > 0:
+		get_node("Quantity").text = "x" + str(dictionary[id].quantity_current)
 	else:
-		get_node("Quantity").hide()
+		if has_node("Quantity"):
+			get_node("Quantity").hide()
 
 func on_mouse_entered() -> void:
-	$Highlight.show()
 	if dictionary[id] : Popups.instance_item(dictionary[id], self)
 
 func on_mouse_exited() -> void:
-	$Highlight.hide()
 	if dictionary[id] : Popups.remove_popup()
+
+func on_gui_input(event) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and not event.is_pressed():
+		match(dictionary[id].category):
+			"equipment":
+				pass
+			"consumable":
+				match(dictionary[id].type):
+					"food":
+						InventoryManager.remove_item(Global.player, dictionary, id)
+						Popups.remove_popup()
+						Global.emit_signal("update")
+					"drink":
+						InventoryManager.remove_item(Global.player, dictionary, id)
+						Popups.remove_popup()
+						Global.emit_signal("update")
 
 func _get_drag_data(at_position: Vector2) -> Variant:
 	var data : Dictionary = {

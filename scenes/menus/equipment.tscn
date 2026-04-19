@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://c1t5a16qt0j5n"]
+
+[ext_resource type="Script" uid="uid://dr0qgp4x5kdmp" path="res://scenes/menus/equipment.gd" id="1_c3fup"]
+[ext_resource type="FontFile" uid="uid://bf5egbw0c8nhk" path="res://fonts/roboto/Roboto-BoldItalic.ttf" id="1_ohg2i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ofcpb"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="Equipment" type="Panel" unique_id=292422185]
+custom_minimum_size = Vector2(160, 128)
+offset_right = 160.0
+offset_bottom = 144.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ofcpb")
+script = ExtResource("1_c3fup")
+
+[node name="Inventory" type="Label" parent="." unique_id=2076068344]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("1_ohg2i")
+theme_override_font_sizes/font_size = 10
+text = "Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Equipment" type="VBoxContainer" parent="." unique_id=1210735166]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 160.0
+offset_bottom = 144.0
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="label_0" type="Label" parent="Equipment" unique_id=1341741019]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ohg2i")
+theme_override_font_sizes/font_size = 6
+text = "Weapons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Weapons" type="HBoxContainer" parent="Equipment" unique_id=240536739]
+layout_mode = 2
+alignment = 1
+
+[node name="label_1" type="Label" parent="Equipment" unique_id=531266093]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ohg2i")
+theme_override_font_sizes/font_size = 6
+text = "Armors"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Armors" type="HBoxContainer" parent="Equipment" unique_id=606318239]
+layout_mode = 2
+alignment = 1

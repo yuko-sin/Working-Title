@@ -34,14 +34,23 @@ func _physics_process(delta: float) -> void:
 	
 	host.velocity = host.movement_direction 
 	
+	var slowdown = (host.get_global_mouse_position() - host.position).normalized()
+	
 	if host.is_running:
 		host.velocity = host.velocity.normalized() * host.movement_speed * 2.0
 		
-		if host.stamina_current > 0.0:
-			host.stamina_current -= 1.0 * delta
+		
+		if host.stats.stamina_current > 0.0:
+			host.stats.stamina_current -= 1.0 * delta
 		else:
 			host.is_running = false
 	else:
 		host.velocity = host.velocity.normalized() * host.movement_speed
+	
+	if host.movement_direction.x < 0 and slowdown.x > 0 or host.movement_direction.x > 0 and slowdown.x < 0:
+		host.velocity.x /= 2.0
+	
+	if host.movement_direction.y < 0 and slowdown.y > 0 or host.movement_direction.y > 0 and slowdown.y < 0:
+		host.velocity.y /= 2.0
 	
 	host.move_and_slide()

@@ -13,5 +13,4 @@ func _physics_process(delta: float) -> void:
 	host.move_and_slide()
 	
 	if host.position.distance_to(host.focus.position) <= 8.0:
-		Combat.hit(host, host.focus)
 		host.queue_free()

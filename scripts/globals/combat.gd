@@ -1,14 +1,18 @@
 extends Node
 
 func hit(dealer : Unit, target : Unit) -> void:
-	var damage = dealer.damage - target.armor
+	var damage = randi_range(dealer.damage_lower, dealer.damage_upper)
+	damage -= target.armor
+	
+	if randi()%100 < dealer.critical:
+		damage *= 2
 	
 	if damage > 0:
-		if target.health_current - damage <= 0:
-			target.health_current = 0
+		if target.stats.health_current - damage <= 0:
+			target.stats.health_current = 0
 			target.change_state("death")
 		else:
-			target.health_current -= damage
+			target.stats.health_current -= damage
 			
 			if dealer == Global.player:
 				target.focus = dealer

@@ -7,11 +7,10 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _process(delta: float) -> void:
-	if is_instance_valid(music_ambience) and not is_instance_valid(Global.world):
+	if is_instance_valid(music_ambience) and not is_instance_valid(Global.area):
 		music_ambience.queue_free()
 
 func instance_music(music : String):
-	return
 	if has_node("music"):
 		get_node("music").queue_free()
 	
@@ -37,7 +36,8 @@ func instance_sound2D(sound : String, position : Vector2):
 	var audioStreamPlayer2D = AudioStreamPlayer2D.new()
 	audioStreamPlayer2D.set_bus("Sounds")
 	audioStreamPlayer2D.stream = load("res://assets/audio/sounds/" + sound + ".wav")
-	add_child(audioStreamPlayer2D)
+	audioStreamPlayer2D.position = position
+	Global.area.add_child(audioStreamPlayer2D)
 	audioStreamPlayer2D.position = position
 	audioStreamPlayer2D.play()
 	audioStreamPlayer2D.connect("finished", on_audioSteramPlayer2D_finished.bind(audioStreamPlayer2D))

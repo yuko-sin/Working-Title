@@ -1,0 +1,165 @@
+[gd_scene format=3 uid="uid://cdnbhg0wka8pj"]
+
+[ext_resource type="StyleBox" uid="uid://bxy6pxd5k2o8h" path="res://resources/inventoryTab_pressed.tres" id="1_mrqgh"]
+[ext_resource type="Script" uid="uid://dk1e4g63lr4qf" path="res://scenes/menus/inventoryButton.gd" id="1_psafj"]
+[ext_resource type="Script" uid="uid://c2fmb0ic1lvy4" path="res://scenes/ui/inventory.gd" id="1_qjyhv"]
+[ext_resource type="Theme" uid="uid://j7r7n4olyc6v" path="res://resources/scrollBar.tres" id="2_ho8i8"]
+[ext_resource type="Texture2D" uid="uid://onc4wow5e536" path="res://assets/textures/icons/inventory/load.png" id="2_udyo3"]
+[ext_resource type="StyleBox" uid="uid://b15aoav5ujqa4" path="res://resources/inventoryTab_normal.tres" id="4_dw5ng"]
+[ext_resource type="Texture2D" uid="uid://cu68coty2mm74" path="res://assets/textures/icons/inventory/inventoryTabs/all.png" id="6_ho8i8"]
+[ext_resource type="Texture2D" uid="uid://bynuipluov4lp" path="res://assets/textures/icons/inventory/inventoryTabs/weapons.png" id="8_udyo3"]
+[ext_resource type="Texture2D" uid="uid://1mp1d8fs86y5" path="res://assets/textures/icons/inventory/inventoryTabs/medicines.png" id="9_a8ig1"]
+[ext_resource type="Texture2D" uid="uid://bubn2tjymsslf" path="res://assets/textures/icons/inventory/inventoryTabs/consumables.png" id="9_udyo3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8ig1"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_ho8i8"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_udyo3"]
+gradient = SubResource("Gradient_ho8i8")
+width = 70
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_psafj"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 10
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[node name="Inventory" type="Control" unique_id=1837631225]
+custom_minimum_size = Vector2(184, 260)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 184.0
+offset_bottom = 260.0
+mouse_filter = 1
+script = ExtResource("1_qjyhv")
+
+[node name="Load" type="VBoxContainer" parent="." unique_id=639388054]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 20.0
+theme_override_constants/separation = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Load" unique_id=558537635]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Load/HBoxContainer" unique_id=1238179773]
+layout_mode = 2
+texture = ExtResource("2_udyo3")
+
+[node name="Label" type="Label" parent="Load/HBoxContainer" unique_id=1212569216]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_font_sizes/font_size = 4
+text = "20.4/6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Load" type="Panel" parent="Load" unique_id=1716885354]
+custom_minimum_size = Vector2(64, 8)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a8ig1")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Load/Load" unique_id=327580629]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 71.0
+offset_bottom = 7.0
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_udyo3")
+
+[node name="Panel" type="Panel" parent="." unique_id=2036031049]
+layout_mode = 0
+offset_top = 43.0
+offset_right = 184.0
+offset_bottom = 260.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_psafj")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=869100750]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 48.0
+offset_right = 183.0
+offset_bottom = 259.0
+theme = ExtResource("2_ho8i8")
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=1646599461]
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 12
+columns = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1904627399]
+layout_mode = 0
+offset_top = 24.0
+offset_right = 58.0
+offset_bottom = 44.0
+theme_override_constants/separation = -1
+metadata/_edit_group_ = true
+
+[node name="All" type="Panel" parent="HBoxContainer" unique_id=581385390]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("1_mrqgh")
+script = ExtResource("1_psafj")
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/All" unique_id=926998237]
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 20.0
+texture = ExtResource("6_ho8i8")
+
+[node name="Weapons" type="Panel" parent="HBoxContainer" unique_id=794146141]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("4_dw5ng")
+script = ExtResource("1_psafj")
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Weapons" unique_id=211148401]
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 20.0
+texture = ExtResource("8_udyo3")
+
+[node name="Consumables" type="Panel" parent="HBoxContainer" unique_id=936451439]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("4_dw5ng")
+script = ExtResource("1_psafj")
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Consumables" unique_id=2009643172]
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 20.0
+texture = ExtResource("9_udyo3")
+
+[node name="Medicines" type="Panel" parent="HBoxContainer" unique_id=1484895603]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("4_dw5ng")
+script = ExtResource("1_psafj")
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Medicines" unique_id=465112771]
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 20.0
+texture = ExtResource("9_a8ig1")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

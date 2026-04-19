@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cjyg582f10blb"]
+
+[ext_resource type="Script" uid="uid://dyuenbg0i4m4m" path="res://scripts/building.gd" id="1_77wy1"]
+[ext_resource type="Texture2D" uid="uid://ba0kolkyrjmhp" path="res://assets/textures/buildings/bunker.png" id="1_ck8ut"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ck8ut"]
+size = Vector2(128, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77wy1"]
+size = Vector2(160, 64)
+
+[node name="Bunker" type="StaticBody2D" unique_id=1536436141]
+script = ExtResource("1_77wy1")
+to_area = "res://scenes/objects/interiors/bunker.tscn"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=225416437]
+position = Vector2(0, -16)
+texture = ExtResource("1_ck8ut")
+
+[node name="collisionShape2D_0" type="CollisionShape2D" parent="." unique_id=1242789957]
+shape = SubResource("RectangleShape2D_ck8ut")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=500384464]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=347361383]
+shape = SubResource("RectangleShape2D_77wy1")

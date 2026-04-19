@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://j3bgqcyvkli7"]
+
+[ext_resource type="Script" uid="uid://bbdjn3ra3rpjb" path="res://scenes/ui/triggerHint.gd" id="1_kpeiq"]
+[ext_resource type="FontFile" uid="uid://cg1ur6jxvwf45" path="res://fonts/roboto/Roboto-Bold.ttf" id="2_ecprj"]
+
+[node name="TriggerHint" type="PanelContainer" unique_id=1147348452]
+offset_right = 16.0
+offset_bottom = 16.0
+script = ExtResource("1_kpeiq")
+
+[node name="Hotkey" type="Label" parent="." unique_id=1053587762]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ecprj")
+theme_override_font_sizes/font_size = 10
+text = "[E]"
+horizontal_alignment = 1
+vertical_alignment = 1
